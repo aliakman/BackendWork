@@ -31,7 +31,7 @@ namespace UI
             nameInputField.text = gameData.UserData.Username;
         }
 
-        private void SetEditedInfo(string v)
+        private void SetEditedInfo(string v) //Playerin girdigi isim bilgisi kaydedilir
         {
             gameData.UserData.Username = v;
             gameData.SaveUserData();

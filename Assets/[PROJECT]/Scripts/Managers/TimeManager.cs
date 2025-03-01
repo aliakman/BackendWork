@@ -28,9 +28,9 @@ namespace Managers
             EventManager.TimeDifference -= TimeDifference;
         }
 
-        private int TimeDifference() { return timeData.UserData.TimeDifferenceAsSeconds; }
+        private int TimeDifference() { return timeData.UserData.TimeDifferenceAsSeconds; } //Oyundan cikip tekrar girene kadarki zaman farkini verir
 
-        private void CalculateTimeDifference()
+        private void CalculateTimeDifference() //Oyundan cikip tekrar girene kadarki zaman farkini hesaplar
         {
             if(!timeData.UserData.IsGameOpenedFirstTime)
             {
@@ -50,7 +50,7 @@ namespace Managers
             timeData.SaveUserData();
         }
 
-        private void OnApplicationPause(bool pause)
+        private void OnApplicationPause(bool pause) //Oyun pause olunca o anki zamani kaydeder
         {
             if (pause)
             {
@@ -59,7 +59,7 @@ namespace Managers
             }
         }
 
-        private void OnApplicationFocus(bool focus)
+        private void OnApplicationFocus(bool focus) //Oyun focusu kaybedince o anki zamani kaydeder
         {
             if (!focus)
             {
@@ -68,7 +68,7 @@ namespace Managers
             }
         }
 
-        private void OnApplicationQuit()
+        private void OnApplicationQuit() //Oyundan quit yapinca o anki zamani kaydeder
         {
             timeData.UserData.ExitTime = System.DateTime.Now.ToString();
             timeData.SaveUserData();

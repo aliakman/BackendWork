@@ -66,7 +66,7 @@ namespace Systems.Save.Base
             DataManager.SaveDataWithPath(defaultUserData.id, nameof(TUserData), _activeUserData.ToJsonString());
         }
 
-        public void SaveDataModel()
+        private void SaveDataModel()
         {
             DataManager.SaveDataWithPath(defaultDataModel.id, nameof(TDataModel), _activeDataModel.ToJsonString());
         }

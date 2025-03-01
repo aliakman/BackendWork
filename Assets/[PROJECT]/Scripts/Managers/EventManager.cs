@@ -22,13 +22,13 @@ namespace Managers
         public static Func<int> TimeDifference;
     }
 
-    public struct ScriptHolder
+    public struct ScriptHolder //Script referanslarina bu eventlerle ulasilir
     {
         public Func<GameManager> GameManager;
         public Func<DataManager> DataManager;
     }
 
-    public struct GameStateEvents
+    public struct GameStateEvents //Oyun referanslarina bu eventlerle ulasilir
     {
         public Func<bool> IsGameStarted;
     }

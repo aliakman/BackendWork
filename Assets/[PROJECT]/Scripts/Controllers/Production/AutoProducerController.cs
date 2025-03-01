@@ -33,9 +33,14 @@ namespace Controllers
 
         private void Update()
         {
+            CalculateCurrentProduction();
+        }
+
+        private void CalculateCurrentProduction() //Anlik oto uretim hesaplamasi yapilir
+        {
             if (gameData.UserData.ProductAmount >= gameData.UserData.MaxCapacity) return;
 
-            if(tmpProductionSpeed > 0)
+            if (tmpProductionSpeed > 0)
             {
                 tmpProductionSpeed -= Time.deltaTime;
             }
@@ -61,7 +66,7 @@ namespace Controllers
             CalculateOfflineProductEarning();
         }
 
-        private void CalculateOfflineProductEarning()
+        private void CalculateOfflineProductEarning() //Offline iken gecen surede otomatik olarak ne kadar  product kazanildigi hesaplanip kaydedilir
         {
             int diffSeconds = EventManager.TimeDifference.Invoke();
 
@@ -70,7 +75,7 @@ namespace Controllers
             tmpProductionSpeed = diffSeconds % gameData.UserData.ProductionSpeedAsSeconds;
         }
 
-        private void AddProduct(int v)
+        private void AddProduct(int v) //Product eklenir
         {
             if (gameData.UserData.ProductAmount + v < 0)
             {

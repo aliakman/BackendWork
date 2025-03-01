@@ -1,10 +1,10 @@
-using UnityEngine;
+using UnityEngine; 
 
 namespace Helpers
 {
-    public class HelperFunctions
+    public class HelperFunctions //Birden cok script tarafindan kullanilabilecek fonksiyonlari buraya yaz
     {
-        public static int[] GetTimes(string dateString)
+        public static int[] GetTimes(string dateString) //Zamani string cinsinden alip saat olarak veren fonksiyon
         {
             int[] times = new int[3];
 
@@ -20,7 +20,7 @@ namespace Helpers
             return times;
         }
 
-        public static string GetTimeString(int v)
+        public static string GetTimeString(int v) //Zamani saniye cinsinden alip string olarak veren fonksiyon
         {
             int[] times = new int[3];
 

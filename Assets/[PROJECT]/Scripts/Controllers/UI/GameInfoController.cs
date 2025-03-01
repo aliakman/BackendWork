@@ -37,7 +37,7 @@ namespace UI
             levelText.text = gameData.UserData.Level.ToString();
         }
 
-        public bool AddMoney(int v)
+        public bool AddMoney(int v) //Para hesabi
         {
             if (gameData.UserData.Money + v < 0) return false;
             gameData.UserData.Money += v;
@@ -46,14 +46,14 @@ namespace UI
             return true;
         }
 
-        public void IncreaseLevel()
+        public void IncreaseLevel() //Level artirimi
         {
             gameData.UserData.Level++;
             levelText.text = gameData.UserData.Level.ToString();
             gameData.SaveUserData();
         }
 
-        public void DecreaseLevel()
+        public void DecreaseLevel() //Level dusurme (normalde boyle bir fonksiyon olmaz ama case senaryosunda ihtiyac olacagi icin ekledim)
         {
             if (gameData.UserData.Level - 1 < 1) return;
             gameData.UserData.Level--;
