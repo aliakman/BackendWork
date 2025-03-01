@@ -1226,7 +1226,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 3571493210633278267}
         m_TargetAssemblyTypeName: UI.GameInfoController, Assembly-CSharp
-        m_MethodName: AddMoney
+        m_MethodName: AddMoneyViaButton
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2912,7 +2912,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 3571493210633278267}
         m_TargetAssemblyTypeName: UI.GameInfoController, Assembly-CSharp
-        m_MethodName: AddMoney
+        m_MethodName: AddMoneyViaButton
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -37,7 +37,12 @@ namespace UI
             levelText.text = gameData.UserData.Level.ToString();
         }
 
-        public bool AddMoney(int v) //Para hesabi
+        public void AddMoneyViaButton(int v)
+        {
+            EventManager.AddMoney?.Invoke(v);
+        }
+
+        private bool AddMoney(int v) //Para hesabi
         {
             if (gameData.UserData.Money + v < 0) return false;
             gameData.UserData.Money += v;
