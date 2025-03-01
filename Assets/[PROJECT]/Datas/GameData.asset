@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a074742b1d52e147a7a2edb5cc6f2ca, type: 3}
+  m_Name: GameData
+  m_EditorClassIdentifier: 
+  objectName: GameData
+  defaultDataModel:
+    id: 4b8b6c6a-5d3f-46fd-bf16-9dd9b49c44f1
+  defaultUserData:
+    id: b7079c81-b206-4487-bc76-681b60b62583
+    Username: 
+    Level: 1
+    Money: 0
+    ProductionSpeedAsSeconds: 120
+    ProductAmount: 0
+    MaxCapacity: 50
