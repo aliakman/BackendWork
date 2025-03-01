@@ -1,15 +1,24 @@
 # HayDayLike
 
 Backend Gelistirici Gorevleri icin BackendDev adinda bir sahne olusturdum.
+
 Her sey dataya yazilir ve datadan getirilir sekilde yapildi.
+
 Zamanin kaydedilmesi System.DateTime ile degil de ornegin Firebase gibi bir yapidan cekilip kaydedilmesi hacklenme olayinin onune gecer. Ancak su an bu yapi hazir olmadigi icin simdilik System.DateTime yapisini kullandim.
 
+Dataları [PROJECT]/Datas klasörünün icindeki scriptableobjectlerler manipule edebilirsiniz.
+
 1- Level sayisini butonlarla artirip azaltabilirsiniz.
+
 2- Isim degisikligini "Name" yazan alana tikladiktan sonra yapabilirsiniz.
+
 3- Money sayisini butonlarla artirip azaltabilirsiniz.
 
+
 4- Toplam uretilmis urun sayisi yer alir. (Oyundan cikip tekrar girdiginizde arada gece sure otomatik uretim suresine bolunup toplam uretilen urun sayisina eklenir.)
+
 5- O an otomatik uretilen urunun suresi yer alir.
+
 
 6- Oyundan cikip tekrar girene kadar gecen surelerin yer aldigi alan.
 
