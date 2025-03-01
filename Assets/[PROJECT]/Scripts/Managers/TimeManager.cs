@@ -1,5 +1,7 @@
 using Datas;
+using Helpers;
 using System;
+using TMPro;
 using UnityEngine;
 
 namespace Managers
@@ -7,6 +9,8 @@ namespace Managers
     public class TimeManager : MonoBehaviour
     {
         [SerializeField] private TimeData timeData;
+        [SerializeField] private TMP_Text timeDiffAsSecondsText;
+        [SerializeField] private TMP_Text timeDiffText;
 
         [SerializeField] private int[] currentTimes = new int[3] { 0, 0, 0 };
         [SerializeField] private int[] dataTimes = new int[3] { 0, 0, 0 };
@@ -47,6 +51,8 @@ namespace Managers
             double secondsDifference = difference.TotalSeconds;
 
             timeData.UserData.TimeDifferenceAsSeconds = (int)secondsDifference;
+            timeDiffAsSecondsText.text = $"Total Time Diff As Seconds: {timeData.UserData.TimeDifferenceAsSeconds}s";
+            timeDiffText.text = $"Total Time Diff As Hour: {HelperFunctions.GetTimeString(timeData.UserData.TimeDifferenceAsSeconds)}";
             timeData.SaveUserData();
         }
 
