@@ -42,9 +42,11 @@ namespace Managers
                 timeData.SaveUserData();
                 return;
             }
-            
-            DateTime dateTime1 = DateTime.ParseExact(timeData.UserData.ExitTime.Split(" ")[1], "HH:mm:ss", null);
-            DateTime dateTime2 = DateTime.ParseExact(DateTime.Now.ToString().Split(" ")[1], "HH:mm:ss", null);
+
+            DateTime dateTime1;
+            DateTime dateTime2;
+            HelperFunctions.GetDateTime(timeData.UserData.ExitTime, out dateTime1);
+            HelperFunctions.GetDateTime(DateTime.Now.ToString(), out dateTime2);
 
             TimeSpan difference = dateTime2 - dateTime1;
 
@@ -76,7 +78,7 @@ namespace Managers
 
         private void OnApplicationQuit() //Oyundan quit yapinca o anki zamani kaydeder
         {
-            timeData.UserData.ExitTime = System.DateTime.Now.ToString();
+            timeData.UserData.ExitTime = DateTime.Now.ToString();
             timeData.SaveUserData();
         }
 

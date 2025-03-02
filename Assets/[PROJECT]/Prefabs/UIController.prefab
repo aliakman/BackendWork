@@ -2539,10 +2539,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
+  m_fontSize: 72
   m_fontSizeBase: 40
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -3413,6 +3413,7 @@ MonoBehaviour:
   productionAmountText: {fileID: 7063491520394757616}
   currentFilledImage: {fileID: 6481775252453940515}
   currentTimeText: {fileID: 997670191648441675}
+  timeReducerMultiplier: 1
 --- !u!1 &6883580020175607494
 GameObject:
   m_ObjectHideFlags: 0
@@ -4043,10 +4044,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
+  m_fontSize: 54.55
   m_fontSizeBase: 40
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 2

@@ -16,8 +16,10 @@ namespace Controllers
         [SerializeField] private Image currentFilledImage;
         [SerializeField] private TMP_Text currentTimeText;
 
+        [SerializeField] private float timeReducerMultiplier = 1f; //editor testleri icin
         private GameData gameData;
         private float tmpProductionSpeed;
+        private bool isStartedToProduce;
 
         private void OnEnable()
         {
@@ -38,11 +40,12 @@ namespace Controllers
 
         private void CalculateCurrentProduction() //Anlik oto uretim hesaplamasi yapilir
         {
+            if (!isStartedToProduce) return;
             if (gameData.UserData.ProductAmount >= gameData.UserData.MaxCapacity) return;
 
             if (tmpProductionSpeed > 0)
             {
-                tmpProductionSpeed -= Time.deltaTime;
+                tmpProductionSpeed -= Time.deltaTime * timeReducerMultiplier;
             }
             else
             {
@@ -70,9 +73,40 @@ namespace Controllers
         {
             int diffSeconds = EventManager.TimeDifference.Invoke();
 
-            int productAmount = Mathf.FloorToInt(diffSeconds / gameData.UserData.ProductionSpeedAsSeconds);
-            AddProduct(productAmount);
-            tmpProductionSpeed = diffSeconds % gameData.UserData.ProductionSpeedAsSeconds;
+            var lastAutoTime = EventManager.TimeData.Invoke().UserData.ExitLastSecondForAutoProducing;
+            if(lastAutoTime > diffSeconds)
+            {
+                diffSeconds = lastAutoTime - diffSeconds;
+                tmpProductionSpeed = diffSeconds;
+            }
+            else if (diffSeconds > lastAutoTime)
+            {
+                AddProduct(1);
+                diffSeconds -= lastAutoTime;
+
+                if (diffSeconds >= gameData.UserData.ProductionSpeedAsSeconds)
+                {
+                    int productAmount = Mathf.FloorToInt(diffSeconds / gameData.UserData.ProductionSpeedAsSeconds);
+                    tmpProductionSpeed = diffSeconds % gameData.UserData.ProductionSpeedAsSeconds;
+                    AddProduct(productAmount);
+                }
+                else
+                {
+                    tmpProductionSpeed = gameData.UserData.ProductionSpeedAsSeconds - diffSeconds;
+                }
+
+            }
+            else
+            {
+                if(diffSeconds != 0)
+                    AddProduct(1);
+                diffSeconds = 0;
+                tmpProductionSpeed = gameData.UserData.ProductionSpeedAsSeconds;
+            }
+
+            
+
+            isStartedToProduce = true;
         }
 
         private void AddProduct(int v) //Product eklenir
@@ -80,12 +114,10 @@ namespace Controllers
             if (gameData.UserData.ProductAmount + v < 0)
             {
                 gameData.UserData.ProductAmount = 0;
-
             }
             else if (gameData.UserData.ProductAmount + v > gameData.UserData.MaxCapacity)
             {
                 gameData.UserData.ProductAmount = gameData.UserData.MaxCapacity;
-
             }
             else
             {
@@ -97,5 +129,30 @@ namespace Controllers
 
             gameData.SaveUserData();
         }
+
+        private void OnApplicationPause(bool pause) //Oyun pause olunca o anki zamani kaydeder
+        {
+            if (pause)
+            {
+                EventManager.TimeData.Invoke().UserData.ExitLastSecondForAutoProducing = Mathf.CeilToInt(tmpProductionSpeed);
+                EventManager.TimeData.Invoke().SaveUserData();
+            }
+        }
+
+        private void OnApplicationFocus(bool focus) //Oyun focusu kaybedince o anki zamani kaydeder
+        {
+            if (!focus)
+            {
+                EventManager.TimeData.Invoke().UserData.ExitLastSecondForAutoProducing = Mathf.CeilToInt(tmpProductionSpeed);
+                EventManager.TimeData.Invoke().SaveUserData();
+            }
+        }
+
+        private void OnApplicationQuit() //Oyundan quit yapinca o anki zamani kaydeder
+        {
+            EventManager.TimeData.Invoke().UserData.ExitLastSecondForAutoProducing = Mathf.CeilToInt(tmpProductionSpeed);
+            EventManager.TimeData.Invoke().SaveUserData();
+        }
+
     }
 }

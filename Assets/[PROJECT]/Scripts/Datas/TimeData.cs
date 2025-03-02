@@ -23,5 +23,6 @@ namespace Datas
         public bool IsGameOpenedFirstTime;
         public string ExitTime;
         public int TimeDifferenceAsSeconds;
+        public int ExitLastSecondForAutoProducing;
     }
 }

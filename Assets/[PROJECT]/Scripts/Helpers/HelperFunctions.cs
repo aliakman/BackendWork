@@ -1,3 +1,5 @@
+using System;
+using System.Globalization;
 using UnityEngine; 
 
 namespace Helpers
@@ -29,9 +31,13 @@ namespace Helpers
             times[2] = Mathf.CeilToInt(v % 60);
 
             string timeText;
-            if(times[0] > 0)
+
+            if (times[0] > 0)
             {
-                timeText = $"{times[0]}h {times[1]}m {times[2]}s";
+                if(times[0] >= 24)
+                    timeText = $"{Mathf.FloorToInt(times[0] / 24)}d {Mathf.FloorToInt(times[0] % 24)}h {times[1]}m {times[2]}s";
+                else
+                    timeText = $"{times[0]}h {times[1]}m {times[2]}s";
             }
             else if (times[1] > 0)
             {
@@ -45,5 +51,31 @@ namespace Helpers
             return timeText;
         }
 
+        public static void GetDateTime(string v, out DateTime parsedDate) //Tarihi cihaz sistemine gore farklý formatlarda da calisacak sekilde elde eder
+        {
+            string[] formats = { 
+                "yyyy-MM-dd HH:mm:ss", "yyyy/MM/dd HH:mm:ss", "yyyy.MM.dd HH:mm:ss", 
+                "MM-dd-yyyy HH:mm:ss", "MM/dd/yyyy HH:mm:ss", "MM.dd.yyyy HH:mm:ss",
+                "dd-MM-yyyy HH:mm:ss", "dd/MM/yyyy HH:mm:ss", "dd.MM.yyyy HH:mm:ss",
+                "d-MM-yyyy HH:mm:ss", "d/MM/yyyy HH:mm:ss", "d.MM.yyyy HH:mm:ss"
+            }; // Ortak tarih formatlari
+
+            try
+            {
+                if (DateTime.TryParseExact(v, formats, CultureInfo.InvariantCulture, DateTimeStyles.None, out parsedDate))
+                {
+
+                }
+                else
+                {
+                    Debug.LogError("Tarih elde edilemedi.");
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.LogError("Sebep: " + e.Message + "    Elde edilemeyen tarih yerine su anki zaman geri donduruluyor.");
+                parsedDate = DateTime.Now;
+            }
+        }
     }
 }
