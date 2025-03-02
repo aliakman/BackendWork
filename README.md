@@ -1,13 +1,17 @@
 # HayDayLike
 
-Backend Gelistirici Gorevleri icin BackendDev adinda bir sahne olusturdum.
+Backend Gelistirici Gorevleri icin BackendDev adinda bir sahne olusturdum. (Proje oldukca basit sadece yazilim yetkinliklerini gostermeyi amaclar sekilde yapildi.)
 
 Her sey dataya yazilir ve datadan getirilir sekilde yapildi.
 
 Zamanin kaydedilmesi System.DateTime ile degil de ornegin Firebase gibi bir yapidan cekilip kaydedilmesi hacklenme olayinin onune gecer. Ancak su an bu yapi hazir olmadigi icin simdilik System.DateTime yapisini kullandim.
 
+Kullanilan mimariler; Observer Pattern, Flyweight Pattern. Manager ve Controller yapisi ile namespace'lere dikkat edildi.
+
 Dataları [PROJECT]/Datas klasörünün icindeki ScriptableObject'leri manipule edebilirsiniz.
+
 Data sistemi icin normal ScriptableObject'ler ile DataModel ve UserModel yapisi ile calisiyorum. DataModel tarafi developer tarafindan girilebilen kisim. UserDataModel tarafi ise hem developer hem de player tarafindan manipule edilebilen taraf. Ayrica bu yapinin icinde remoteconfig ile manipule de yapilabilir.
+
 Auto Producer durumunu, sahnede UIController/ProductCanvas objesinde AutoProducerController adinda scripti ile kontrol ediyorum. Oradan kontrol edebilirsiniz.
 
 1- Level sayisini butonlarla artirip azaltabilirsiniz.
