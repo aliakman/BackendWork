@@ -7,6 +7,7 @@ Her sey dataya yazilir ve datadan getirilir sekilde yapildi.
 Zamanin kaydedilmesi System.DateTime ile degil de ornegin Firebase gibi bir yapidan cekilip kaydedilmesi hacklenme olayinin onune gecer. Ancak su an bu yapi hazir olmadigi icin simdilik System.DateTime yapisini kullandim.
 
 Dataları [PROJECT]/Datas klasörünün icindeki scriptableobjectlerler manipule edebilirsiniz.
+Auto Producer durumunu, sahnede UIController/ProductCanvas objesinde AutoProducerController adinda scripti ile kontrol ediyorum. Oradan kontrol edebilirsiniz.
 
 1- Level sayisini butonlarla artirip azaltabilirsiniz.
 
